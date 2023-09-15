@@ -6,7 +6,7 @@ type ErrorLevelType = "L" | "M" | "Q" | "H";
 
 export default function Home() {
   const [{ value, color, bgColor, icon, errorLevel }, setConfgQR] = useState({
-    value: "localhost:300",
+    value: "https://getmyqrcode.vercel.app/",
     color: "#000",
     bgColor: "#fff",
     icon: "",
@@ -20,7 +20,7 @@ export default function Home() {
     if (canvas) {
       const url = canvas.toDataURL();
       const a = document.createElement("a");
-      a.download = "localhost_" + value;
+      a.download = "getmyqrcode_" + value;
       a.href = url;
       document.body.appendChild(a);
       a.click();
@@ -40,7 +40,7 @@ export default function Home() {
               errorLevel={errorLevel}
               bgColor={bgColor}
               color={color}
-              value={value || "localhost"}
+              value={value || "https://getmyqrcode.vercel.app/"}
               icon={icon}
             />
             <Button type="primary" onClick={downloadQRCode}>
