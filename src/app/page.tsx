@@ -20,7 +20,8 @@ export default function Home() {
     if (canvas) {
       const url = canvas.toDataURL();
       const a = document.createElement("a");
-      a.download = "getmyqrcode_" + value;
+      a.download =
+        "getmyqrcode_" + new URL(value).hostname.replaceAll(".", "_");
       a.href = url;
       document.body.appendChild(a);
       a.click();
@@ -37,6 +38,7 @@ export default function Home() {
             className="flex items-center justify-center h-full border-r border-zinc-300"
           >
             <QRCode
+              bordered
               errorLevel={errorLevel}
               bgColor={bgColor}
               color={color}
