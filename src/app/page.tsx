@@ -20,8 +20,13 @@ export default function Home() {
     if (canvas) {
       const url = canvas.toDataURL();
       const a = document.createElement("a");
-      a.download =
-        "getmyqrcode_" + new URL(value).hostname.replaceAll(".", "_");
+      let downloadTitle;
+      try {
+        downloadTitle = new URL(value).hostname.replaceAll(".", "_");
+      } catch (error) {
+        downloadTitle = value;
+      }
+      a.download = "getmyqrcode_" + downloadTitle;
       a.href = url;
       document.body.appendChild(a);
       a.click();
