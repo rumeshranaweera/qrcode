@@ -24,7 +24,7 @@ export default function Home() {
       try {
         downloadTitle = new URL(value).hostname.replaceAll(".", "_");
       } catch (error) {
-        downloadTitle = value;
+        downloadTitle = value.replaceAll(".", "_");
       }
       a.download = "getmyqrcode_" + downloadTitle;
       a.href = url;
